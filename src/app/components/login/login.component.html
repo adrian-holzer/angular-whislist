@@ -1,0 +1,18 @@
+<div class="wrapper fadeInDown" *ngIf="!authService.getUser()">
+    <div id="formContent">
+        <!-- Login Form -->
+        <form class="p-4">
+            <input type="text" id="username" class="fadeIn second" name="username" #username placeholder="login">
+            <input type="text" id="password" class="fadeIn third" name="password" #password placeholder="password">
+            <input type="submit" (click)="login(username.value,password.value)" class="fadeIn fourth mt-3" value="Entrar">
+
+        </form>
+
+        <div *ngIf="mensajeError!=''" class="alert alert-danger" role="alert">
+            {{mensajeError}}
+        </div>
+
+
+    </div>
+</div>
+<input type="submit" (click)="logout()" class="fadeIn fourth mt-3" *ngIf="authService.getUser()" value="Cerrar Sesion">
